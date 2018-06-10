@@ -19,6 +19,12 @@ var UserSchema = mongoose.Schema({
   },
   name: {
     type: String
+  },
+  dateofbirth: {
+    type: String
+  },
+  country: {
+    type: String
   }
 });
 

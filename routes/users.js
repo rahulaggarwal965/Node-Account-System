@@ -24,12 +24,16 @@ router.get('/home', function(req, res, next) {
 
 router.post('/register', function(req, res, next) {
   var name = req.body.name;
+  var dateofbirth = req.body.dateofbirth;
+  var country = req.body.country;
   var email = req.body.email;
   var username = req.body.username;
   var password = req.body.password;
   var password2 = req.body.password2;
 
   req.checkBody('name', 'Your name is required').notEmpty();
+  req.checkBody('dateofbirth', 'Your date of birth is required').notEmpty();
+  req.checkBody('country', 'Your country of origin is required').notEmpty();
   req.checkBody('email', 'Your email is required').notEmpty();
   req.checkBody('email', 'The email is not valid').isEmail();
   req.checkBody('username', 'A username is required').notEmpty();
@@ -42,6 +46,8 @@ router.post('/register', function(req, res, next) {
   } else {
     var newUser = new User({
       name: name,
+      dateofbirth: dateofbirth,
+      country: country,
       email: email,
       username: username,
       password: password
@@ -52,8 +58,8 @@ router.post('/register', function(req, res, next) {
     });
     req.flash('success', 'You have completed your registration');
 
-    res.location('/');
-    res.redirect('/');
+    res.location('/users/login');
+    res.redirect('/users/login');
   }
 });
 
