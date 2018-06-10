@@ -21,7 +21,7 @@ var UserSchema = mongoose.Schema({
     type: String
   },
   dateofbirth: {
-    type: String
+    type: Date
   },
   country: {
     type: String
